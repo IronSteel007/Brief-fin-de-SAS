@@ -33,7 +33,7 @@ bool add_account(int n){
 		printf("Enter The lastname : ");
 		scanf("%s", Tab_C[all_account].lastname);
 
-		printf("Enter The firstlastname : ");
+		printf("Enter The firstname : ");
 		scanf("%s", Tab_C[all_account].firstname);
 
 		printf("Enter The amount : ");
@@ -144,11 +144,11 @@ void display() {
 					case 2 :
 						printf("You have chosen the sort by ----> amount ----> Descending Order \n");
                         struct account temp_account;
-						for(i = 0 ; i > all_account ; i++)
+						for(i = 0 ; i < all_account ; i++)
 						{
 						    for(j = 0 ; j < all_account-i-1 ; j++)
 						    {
-						        if(Tab_C[j].amount < Tab_C[j+1].amount)
+						        if(Tab_C[j].amount > Tab_C[j+1].amount)
 						        {
 						        	temp_account = Tab_C[j+1];
 						            Tab_C[j+1]=Tab_C[j];
@@ -176,7 +176,7 @@ void display() {
 						{
 						    for(j = 0 ; j < all_account-i-1 ; j++)
 						    {
-						        if(strcmp(Tab_C[j].lastname, Tab_C[j+1].lastname) < 0){
+						        if(strcmp(Tab_C[j].lastname, Tab_C[j+1].lastname) > 0){
 						        	temp_account = Tab_C[j+1];
 						            Tab_C[j+1]=Tab_C[j];
 						            Tab_C[j]=temp_account;
@@ -196,7 +196,7 @@ void display() {
 						{
 						    for(j = 0 ; j < all_account-i-1 ; j++)
 						    {
-						        if(strcmp(Tab_C[j].lastname, Tab_C[j+1].lastname) > 0)
+						        if(strcmp(Tab_C[j].lastname, Tab_C[j+1].lastname) < 0)
 						        {
 						        	temp_account = Tab_C[j+1];
 						            Tab_C[j+1]=Tab_C[j];
@@ -217,6 +217,7 @@ void display() {
 			case 3 :
 				cleanCls();
 					int i ;
+					int p ;
 					char id_card[10];
 					bool get_it=false;
 					printf("Entrer The id_card : ");
@@ -224,10 +225,11 @@ void display() {
 					for(i = 0; i < all_account; i++) {
 						if (strcmp(id_card, Tab_C[i].id_card) == 0) {
 							get_it=true;
+							p=i;
 						}
 					}
 						if (get_it)
-							printf("find it \n \n");
+							printf("id card found \t\t lastname : %s \t firsname : %s \t id card : %s \t amount : %f", Tab_C[p].lastname, Tab_C[p].firstname, Tab_C[p].id_card, Tab_C[p].amount);
 						else
 							printf("not found \n \n");
 				break;
